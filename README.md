@@ -26,3 +26,5 @@ Some cells may not have the background set to a color such as 'white', 'gray', b
     =getBackgroundColor("B9")
 
 and afterwards use this value as a parameter to the two functions above.
+
+Information on how to install the script directly from the gallery can be found [here](http://webapps.stackexchange.com/a/25847/12705).
