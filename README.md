@@ -1,4 +1,4 @@
-GoogleApps_SumByColor
+GoogleApps SumByColor
 =====================
 
 This is a [Google Spreadsheets script](https://developers.google.com/apps-script/) that allows summing up cells depending on their foreground/background color.
