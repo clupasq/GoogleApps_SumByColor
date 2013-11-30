@@ -28,3 +28,24 @@ Some cells may not have the background set to a color such as 'white', 'gray', b
 and afterwards use this value as a parameter to the two functions above.
 
 Information on how to install the script directly from the gallery can be found [here](http://webapps.stackexchange.com/a/25847/12705).
+
+
+Auto Updates
+------------
+
+Google Spreadsheet [will cache](http://stackoverflow.com/a/9023954/390819) the values computed with the functions described above. Therefore, if values change, the sum will not be updated.
+
+This is because `<range specification>`s are passed as strings, and there is no way for the spreadsheet to "know" that the formula depends on that particular range of cells.
+
+The solution is to add a third parameter to the function, representing the "real" range of cells (not as a string).
+
+For example, instead of:
+
+    =sumWhereBackgroundColorIs("white", "B2:F13")
+    
+you should write:
+
+    =sumWhereBackgroundColorIs("white", "B2:F13", B2:F13)
+    
+and now the sum should update whenever one of the "watched" values change.
+
