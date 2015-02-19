@@ -6,14 +6,15 @@ This is a [Google Spreadsheets script](https://developers.google.com/apps-script
 
 Installing the script will make the following functions available in the spreadsheet:
 
-* `getBackgroundColor(<cell specification>)`
-* `getForegroundColor(<cell specification>)`
+* `getBackgroundColor(<cell specification>, [<spreadsheet key>])`
+* `getForegroundColor(<cell specification>, [<spreadsheet key>])`
 
-* `sumWhereBackgroundColorIs(<color>, <range specification>)`
-* `sumWhereForegroundColorIs(<color>, <range specification>)`
-* `sumWhereBackgroundColorIsNot(<color>, <range specification>)`
-* `sumWhereForegroundColorIsNot(<color>, <range specification>)`
+* `sumWhereBackgroundColorIs(<color>, <range specification>, [<spreadsheet key>])`
+* `sumWhereForegroundColorIs(<color>, <range specification>, [<spreadsheet key>])`
+* `sumWhereBackgroundColorIsNot(<color>, <range specification>, [<spreadsheet key>])`
+* `sumWhereForegroundColorIsNot(<color>, <range specification>, [<spreadsheet key>])`
 
+The `<spreadsheet key>` parameter is optional in all cases. It should be provided in cases where the cells to be summed up are in a different spreadsheet. If it is not provided, the current spreadsheet will be used by default. Here's how to find the spreadsheet key: [link](http://www.coolheadtech.com/blog/use-data-from-other-google-spreadsheets)
 
 Please note that `<range specification>` and `<cell specification>` are expressed in **A1** notation, and **must be enclosed in quotes**.
 
@@ -37,7 +38,7 @@ Google Spreadsheet [will cache](http://stackoverflow.com/a/9023954/390819) the v
 
 This is because `<range specification>`s are passed as strings, and there is no way for the spreadsheet to "know" that the formula depends on that particular range of cells.
 
-The solution is to add a third parameter to the function, representing the "real" range of cells (not as a string).
+The solution is to add an additional parameter to the function, representing the "real" range of cells (not as a string).
 
 For example, instead of:
 
@@ -45,7 +46,7 @@ For example, instead of:
     
 you should write:
 
-    =sumWhereBackgroundColorIs("white", "B2:F13", B2:F13)
-    
-and now the sum should update whenever one of the "watched" values change.
+    =sumWhereBackgroundColorIs("white", "B2:F13", "", B2:F13)
+
+and now the sum should update whenever one of the "watched" values change. Note that in the above formula the third paremeter is a `""`, because it expects a spreadsheet key there.
 
