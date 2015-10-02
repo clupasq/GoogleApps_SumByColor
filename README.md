@@ -3,6 +3,10 @@ GoogleApps SumByColor
 
 This is a [Google Spreadsheets script](https://developers.google.com/apps-script/) that allows summing up cells depending on their foreground/background color.
 
+### :warning: WARNING
+
+**The approach used in this script is slow, cumbersome and error prone. Please consider using other approaches if available. For example, you could label your data in additional columns/rows and use the built-in function [`SUMIF`](https://support.google.com/docs/answer/3093583?hl=en), to conditionally sum a range of columns.
+If there is no alternative, or it's too hard to find one, go ahead and use this script as a last resort.**
 
 Installing the script will make the following functions available in the spreadsheet:
 
